@@ -34,26 +34,21 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.reloadToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.addToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.exitToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.игрокиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.игрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выплатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ставкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.reloadContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripMain.SuspendLayout();
-            this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +61,7 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(800, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(585, 24);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             this.menuStripMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -83,7 +78,7 @@
             // 
             this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
             this.выходToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.выходToolStripMenuItem1.Text = "Exit";
+            this.выходToolStripMenuItem1.Text = "Выход";
             this.выходToolStripMenuItem1.Click += new System.EventHandler(this.выходToolStripMenuItem1_Click);
             // 
             // выходToolStripMenuItem
@@ -92,11 +87,55 @@
             this.игрокиToolStripMenuItem,
             this.игрыToolStripMenuItem,
             this.сотрудникиToolStripMenuItem,
-            this.выплатыToolStripMenuItem});
+            this.выплатыToolStripMenuItem,
+            this.ставкиToolStripMenuItem,
+            this.currentGameToolStripMenuItem});
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.выходToolStripMenuItem.Text = "Таблицы";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
+            // игрокиToolStripMenuItem
+            // 
+            this.игрокиToolStripMenuItem.Name = "игрокиToolStripMenuItem";
+            this.игрокиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.игрокиToolStripMenuItem.Text = "Игроки";
+            this.игрокиToolStripMenuItem.Click += new System.EventHandler(this.игрокиToolStripMenuItem_Click);
+            // 
+            // игрыToolStripMenuItem
+            // 
+            this.игрыToolStripMenuItem.Name = "игрыToolStripMenuItem";
+            this.игрыToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.игрыToolStripMenuItem.Text = "Игры";
+            this.игрыToolStripMenuItem.Click += new System.EventHandler(this.игрыToolStripMenuItem_Click);
+            // 
+            // сотрудникиToolStripMenuItem
+            // 
+            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
+            this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
+            // 
+            // выплатыToolStripMenuItem
+            // 
+            this.выплатыToolStripMenuItem.Name = "выплатыToolStripMenuItem";
+            this.выплатыToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.выплатыToolStripMenuItem.Text = "Выплаты";
+            this.выплатыToolStripMenuItem.Click += new System.EventHandler(this.выплатыToolStripMenuItem_Click);
+            // 
+            // ставкиToolStripMenuItem
+            // 
+            this.ставкиToolStripMenuItem.Name = "ставкиToolStripMenuItem";
+            this.ставкиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.ставкиToolStripMenuItem.Text = "Ставки";
+            this.ставкиToolStripMenuItem.Click += new System.EventHandler(this.ставкиToolStripMenuItem_Click);
+            // 
+            // currentGameToolStripMenuItem
+            // 
+            this.currentGameToolStripMenuItem.Name = "currentGameToolStripMenuItem";
+            this.currentGameToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.currentGameToolStripMenuItem.Text = "Данные о текущих играх";
+            this.currentGameToolStripMenuItem.Click += new System.EventHandler(this.currentGameToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -105,95 +144,21 @@
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
-            // toolStripMain
-            // 
-            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reloadToolStripButton,
-            this.addToolStripButton,
-            this.removeToolStripButton,
-            this.exitToolStripButton});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 24);
-            this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(800, 25);
-            this.toolStripMain.TabIndex = 1;
-            this.toolStripMain.Text = "Обновить";
-            this.toolStripMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ExitButtom_ItemClicked);
-            // 
-            // reloadToolStripButton
-            // 
-            this.reloadToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.reloadToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("reloadToolStripButton.Image")));
-            this.reloadToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.reloadToolStripButton.Name = "reloadToolStripButton";
-            this.reloadToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.reloadToolStripButton.Text = "toolStripButton1";
-            this.reloadToolStripButton.Click += new System.EventHandler(this.reloadToolStripButton_Click);
-            // 
-            // addToolStripButton
-            // 
-            this.addToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripButton.Image")));
-            this.addToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addToolStripButton.Name = "addToolStripButton";
-            this.addToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.addToolStripButton.Text = "toolStripButton2";
-            // 
-            // removeToolStripButton
-            // 
-            this.removeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.removeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("removeToolStripButton.Image")));
-            this.removeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.removeToolStripButton.Name = "removeToolStripButton";
-            this.removeToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.removeToolStripButton.Text = "toolStripButton1";
-            // 
-            // exitToolStripButton
-            // 
-            this.exitToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.exitToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripButton.Image")));
-            this.exitToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exitToolStripButton.Name = "exitToolStripButton";
-            this.exitToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.exitToolStripButton.Text = "toolStripButton1";
-            this.exitToolStripButton.Click += new System.EventHandler(this.exitToolStripButton_Click);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(585, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // игрокиToolStripMenuItem
+            // statusLabel
             // 
-            this.игрокиToolStripMenuItem.Name = "игрокиToolStripMenuItem";
-            this.игрокиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.игрокиToolStripMenuItem.Text = "Игроки";
-            this.игрокиToolStripMenuItem.Click += new System.EventHandler(this.игрокиToolStripMenuItem_Click);
-            // 
-            // игрыToolStripMenuItem
-            // 
-            this.игрыToolStripMenuItem.Name = "игрыToolStripMenuItem";
-            this.игрыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.игрыToolStripMenuItem.Text = "Игры";
-            this.игрыToolStripMenuItem.Click += new System.EventHandler(this.игрыToolStripMenuItem_Click);
-            // 
-            // сотрудникиToolStripMenuItem
-            // 
-            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
-            this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
-            // 
-            // выплатыToolStripMenuItem
-            // 
-            this.выплатыToolStripMenuItem.Name = "выплатыToolStripMenuItem";
-            this.выплатыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.выплатыToolStripMenuItem.Text = "Выплаты";
-            this.выплатыToolStripMenuItem.Click += new System.EventHandler(this.выплатыToolStripMenuItem_Click);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(118, 17);
+            this.statusLabel.Text = "toolStripStatusLabel1";
             // 
             // contextMenuStripMain
             // 
@@ -232,26 +197,15 @@
             this.exitContextMenuItem.Text = "Exit";
             this.exitContextMenuItem.Click += new System.EventHandler(this.exitContextMenuItem_Click_1);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(118, 17);
-            this.statusLabel.Text = "toolStripStatusLabel1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(585, 366);
             this.ContextMenuStrip = this.contextMenuStripMain;
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.menuStripMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainForm";
             this.Text = "Казино:управление ставками";
@@ -259,8 +213,6 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
-            this.toolStripMain.ResumeLayout(false);
-            this.toolStripMain.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.contextMenuStripMain.ResumeLayout(false);
@@ -276,11 +228,6 @@
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStripMain;
-        private System.Windows.Forms.ToolStripButton reloadToolStripButton;
-        private System.Windows.Forms.ToolStripButton addToolStripButton;
-        private System.Windows.Forms.ToolStripButton removeToolStripButton;
-        private System.Windows.Forms.ToolStripButton exitToolStripButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem игрокиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem игрыToolStripMenuItem;
@@ -292,7 +239,8 @@
         private System.Windows.Forms.ToolStripMenuItem removeContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitContextMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ставкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem currentGameToolStripMenuItem;
     }
 }
 

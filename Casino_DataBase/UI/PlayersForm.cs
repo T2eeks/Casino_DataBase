@@ -4,6 +4,10 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
+using Casino_DataBase.DataAccess;
+using System.Collections.Generic;
+
 
 namespace Casino_DataBase
 {
@@ -20,89 +24,103 @@ namespace Casino_DataBase
 
             try
             {
-                string connectionString = "Data Source=127.0.0.1,1434;Initial Catalog=Casino;Integrated Security=True;Encrypt=False";
-                connection = new SqlConnection(connectionString);
-                connection.Open();
+                connection = DatabaseConnection.GetInstance();
 
                 playersTable = new DataTable();
-                adapter = new SqlDataAdapter("SELECT * FROM Игрок", connection);
+                adapter = new SqlDataAdapter("SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока FROM Игрок", connection);
                 adapter.Fill(playersTable);
 
                 bindingSource = new BindingSource(playersTable, null);
-                playersDataGridView.DataSource = bindingSource;
                 playersBindingNavigator.BindingSource = bindingSource;
 
-                // Привязки текстовых полей
+                playersDataGridView.AutoGenerateColumns = false; 
+                playersDataGridView.Columns.Clear();
+
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "ID",
+                    HeaderText = "ID",
+                    ReadOnly = true
+                });
+
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Фамилия",
+                    HeaderText = "Фамилия"
+                });
+
+                
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Имя",
+                    HeaderText = "Имя"
+                });
+
+                
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Отчество",
+                    HeaderText = "Отчество"
+                });
+
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Дата_рождения",
+                    HeaderText = "Дата рождения"
+                });
+
+                var statusItems = new List<object>
+            {
+                new { Display = "Vip", Value = true },
+                new { Display = "Classic", Value = false }
+            };
+                DataGridViewComboBoxColumn statusColumn = new DataGridViewComboBoxColumn
+                {
+                    DataPropertyName = "Статус",
+                    HeaderText = "Статус",
+                    DataSource = statusItems,
+                    DisplayMember = "Display",
+                    ValueMember = "Value",
+                    ValueType = typeof(bool)
+                };
+                playersDataGridView.Columns.Add(statusColumn);
+
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Фото_игрока",
+                    HeaderText = "Фото игрока",
+                });
+
+                playersDataGridView.DataSource = bindingSource;
+
                 nameTextBox.DataBindings.Add("Text", bindingSource, "Имя", true, DataSourceUpdateMode.OnPropertyChanged, "");
                 surnameTextBox.DataBindings.Add("Text", bindingSource, "Фамилия", true, DataSourceUpdateMode.OnPropertyChanged, "");
                 patronymicTextBox.DataBindings.Add("Text", bindingSource, "Отчество", true, DataSourceUpdateMode.OnPropertyChanged, "");
                 birthDateTextBox.DataBindings.Add("Text", bindingSource, "Дата_рождения", true, DataSourceUpdateMode.OnPropertyChanged, "");
 
-                // Настройка ComboBox
                 statusComboBox.Items.AddRange(new string[] { "Vip", "Classic" });
                 statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                // Привязка ComboBox к столбцу Статус
-                statusComboBox.DataBindings.Add("SelectedIndex", bindingSource, "Статус", true, DataSourceUpdateMode.OnPropertyChanged);
                 statusComboBox.SelectedIndexChanged += (s, e) =>
                 {
-                    if (bindingSource.Current != null && statusComboBox.SelectedIndex >= 0)
-                    {
-                        DataRowView row = (DataRowView)bindingSource.Current;
-                        row["Статус"] = (statusComboBox.SelectedIndex == 0); // Vip = true
-                    }
-                };
-
-                // Преобразуем булевый статус в таблице в текст
-                playersDataGridView.CellFormatting += (s, e) =>
-                {
-                    if (playersDataGridView.Columns[e.ColumnIndex].Name == "Статус" && e.Value != null && e.Value != DBNull.Value)
-                    {
-                        try
-                        {
-                            bool isVip = false;
-                            if (e.Value is bool b)
-                                isVip = b;
-                            else if (e.Value is int i)
-                                isVip = (i != 0);
-                            else if (e.Value is string sValue)
-                                isVip = sValue.Equals("Vip", StringComparison.OrdinalIgnoreCase) || sValue == "1" || sValue.ToLower() == "true";
-
-                            e.Value = isVip ? "Vip" : "Classic";
-                            e.FormattingApplied = true;
-                        }
-                        catch
-                        {
-                            e.Value = "Ошибка";
-                            e.FormattingApplied = true;
-                        }
-                    }
-                };
-
-                // Обработка смены строки и загрузка фото
-                playersDataGridView.SelectionChanged += (s, e) =>
-                {
-                    if (playersDataGridView.SelectedRows.Count > 0)
-                    {
-                        int selectedIndex = playersDataGridView.SelectedRows[0].Index;
-                        bindingSource.Position = selectedIndex;
-                    }
-
                     if (bindingSource.Current != null)
                     {
                         DataRowView row = (DataRowView)bindingSource.Current;
+                        row["Статус"] = statusComboBox.SelectedItem.ToString() == "Vip";
+                    }
+                };
 
-                        // Фото
-                        if (row["Фото_игрока"] != DBNull.Value && !string.IsNullOrEmpty(row["Фото_игрока"].ToString()))
+                playersDataGridView.SelectionChanged += (s, e) =>
+                {
+                    if (bindingSource.Current != null)
+                    {
+                        DataRowView row = (DataRowView)bindingSource.Current;
+                        bool isVip = row["Статус"] != DBNull.Value ? (bool)row["Статус"] : false; 
+                        statusComboBox.SelectedItem = isVip ? "Vip" : "Classic";
+
+                        string photoPath = row["Фото_игрока"]?.ToString();
+                        if (!string.IsNullOrEmpty(photoPath) && File.Exists(photoPath))
                         {
-                            string photoPath = row["Фото_игрока"].ToString();
-                            if (File.Exists(photoPath))
-                                playerPictureBox.Image = Image.FromFile(photoPath);
-                            else
-                            {
-                                playerPictureBox.Image = null;
-                                MessageBox.Show($"Файл {photoPath} не найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            playerPictureBox.Image = Image.FromFile(photoPath);
                         }
                         else
                         {
@@ -111,21 +129,30 @@ namespace Casino_DataBase
                     }
                 };
 
-                // Обработка ошибок в таблице
+                bindingSource.CurrentItemChanged += (s, e) =>
+                {
+                    if (bindingSource.Current != null)
+                    {
+                        DataRowView row = (DataRowView)bindingSource.Current;
+                        bool status = row["Статус"] != DBNull.Value ? (bool)row["Статус"] : false; 
+                                                                                                   
+                    }
+                };
+
                 playersDataGridView.DataError += (s, e) =>
                 {
-                    MessageBox.Show("Ошибка отображения данных в таблице.\n" + e.Exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    e.ThrowException = false;
+                    MessageBox.Show($"Ошибка в DataGridView: {e.Exception.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
                 };
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка подключения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                if (connection != null && connection.State == ConnectionState.Open)
-                    connection.Close();
+                
             }
         }
 
@@ -135,6 +162,9 @@ namespace Casino_DataBase
             {
                 if (playersTable != null && adapter != null)
                 {
+                    playersDataGridView.EndEdit();
+                    bindingSource.EndEdit();
+
                     SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                     adapter.Update(playersTable);
                     MessageBox.Show("Изменения сохранены при закрытии!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -144,21 +174,23 @@ namespace Casino_DataBase
             {
                 MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void playersBindingNavigator_RefreshItems(object sender, EventArgs e)
-        {
-
+            finally
+            {
+                DatabaseConnection.CloseConnection();
+            }
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             try
             {
+                playersDataGridView.EndEdit();
+                bindingSource.EndEdit();
+
                 SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-                adapter.Update(playersTable);
-                playersDataGridView.Refresh(); 
-                MessageBox.Show("Изменения сохранены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int rowsAffected = adapter.Update(playersTable);
+                playersDataGridView.Refresh();
+                MessageBox.Show($"Строк обновлено: {rowsAffected}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -170,26 +202,21 @@ namespace Casino_DataBase
         {
             try
             {
-                // Сохраняем текущую позицию
                 int currentPosition = bindingSource.Position;
 
-                // Сохраняем изменения в базе
                 SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                 adapter.Update(playersTable);
 
-                // Обновляем данные
                 playersTable.Clear();
                 adapter.Fill(playersTable);
 
-                // Восстанавливаем позицию
                 if (currentPosition >= 0 && currentPosition < bindingSource.Count)
                 {
                     bindingSource.Position = currentPosition;
                 }
 
-                // Принудительно обновляем DataGridView
-                playersDataGridView.DataSource = null; // Сбрасываем источник данных
-                playersDataGridView.DataSource = bindingSource; // Заново привязываем
+                playersDataGridView.DataSource = null;
+                playersDataGridView.DataSource = bindingSource;
                 playersDataGridView.Refresh();
 
                 MessageBox.Show("Данные обновлены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -200,26 +227,32 @@ namespace Casino_DataBase
             }
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bindingSource.AddNew();
-                playerPictureBox.Image = null; // Очищаем PictureBox для новой записи
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка добавления: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void deleteToolStripButton_Click(object sender, EventArgs e)
         {
             if (playersDataGridView.SelectedRows.Count > 0)
             {
                 int selectedIndex = playersDataGridView.SelectedRows[0].Index;
                 bindingSource.Position = selectedIndex;
-                bindingSource.RemoveCurrent();
+
+                try
+                {
+                    DataRowView row = (DataRowView)bindingSource.Current;
+                    int idToDelete = (int)row["ID"];
+                    MessageBox.Show($"Попытка удалить игрока с ID: {idToDelete}");
+
+                    bindingSource.RemoveCurrent();
+
+                    SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                    int rowsAffected = adapter.Update(playersTable);
+                    MessageBox.Show($"Удалено строк: {rowsAffected}");
+
+                    playersDataGridView.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка удаления: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    playersTable.RejectChanges();
+                }
             }
             else
             {
@@ -246,7 +279,6 @@ namespace Casino_DataBase
 
                         DataRowView row = (DataRowView)bindingSource.Current;
                         row["Фото_игрока"] = photoPath;
-                        // Если добавлен столбец PhotoPath: row["PhotoPath"] = photoPath;
 
                         SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                         adapter.Update(playersTable);
@@ -257,12 +289,6 @@ namespace Casino_DataBase
                     }
                 }
             }
-
-        }
-
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

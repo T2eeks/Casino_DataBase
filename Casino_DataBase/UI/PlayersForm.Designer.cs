@@ -79,13 +79,11 @@
             // 
             // playersDataGridView
             // 
-            this.playersDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.playersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.playersDataGridView.Location = new System.Drawing.Point(2, 2);
+            this.playersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playersDataGridView.Location = new System.Drawing.Point(0, 0);
             this.playersDataGridView.Name = "playersDataGridView";
-            this.playersDataGridView.Size = new System.Drawing.Size(557, 226);
+            this.playersDataGridView.Size = new System.Drawing.Size(627, 222);
             this.playersDataGridView.TabIndex = 0;
             // 
             // casinoDataSet
@@ -123,10 +121,9 @@
             this.playersBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.playersBindingNavigator.Name = "playersBindingNavigator";
             this.playersBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.playersBindingNavigator.Size = new System.Drawing.Size(786, 25);
+            this.playersBindingNavigator.Size = new System.Drawing.Size(874, 25);
             this.playersBindingNavigator.TabIndex = 1;
             this.playersBindingNavigator.Text = "bindingNavigator1";
-            this.playersBindingNavigator.RefreshItems += new System.EventHandler(this.playersBindingNavigator_RefreshItems);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -136,7 +133,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -233,7 +229,7 @@
             this.toolStripButton4});
             this.playersToolStrip.Location = new System.Drawing.Point(0, 25);
             this.playersToolStrip.Name = "playersToolStrip";
-            this.playersToolStrip.Size = new System.Drawing.Size(786, 27);
+            this.playersToolStrip.Size = new System.Drawing.Size(874, 27);
             this.playersToolStrip.TabIndex = 2;
             this.playersToolStrip.Text = "toolStrip1";
             // 
@@ -259,10 +255,13 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.playersDataGridView);
             this.panel1.Location = new System.Drawing.Point(12, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(562, 231);
+            this.panel1.Size = new System.Drawing.Size(627, 222);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -327,7 +326,6 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Enabled = false;
             this.nameTextBox.Location = new System.Drawing.Point(80, 18);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(117, 20);
@@ -335,7 +333,6 @@
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Enabled = false;
             this.surnameTextBox.Location = new System.Drawing.Point(80, 48);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(117, 20);
@@ -343,7 +340,6 @@
             // 
             // patronymicTextBox
             // 
-            this.patronymicTextBox.Enabled = false;
             this.patronymicTextBox.Location = new System.Drawing.Point(80, 80);
             this.patronymicTextBox.Name = "patronymicTextBox";
             this.patronymicTextBox.Size = new System.Drawing.Size(117, 20);
@@ -351,7 +347,6 @@
             // 
             // birthDateTextBox
             // 
-            this.birthDateTextBox.Enabled = false;
             this.birthDateTextBox.Location = new System.Drawing.Point(312, 17);
             this.birthDateTextBox.Name = "birthDateTextBox";
             this.birthDateTextBox.Size = new System.Drawing.Size(121, 20);
@@ -359,7 +354,6 @@
             // 
             // statusComboBox
             // 
-            this.statusComboBox.Enabled = false;
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Location = new System.Drawing.Point(312, 53);
             this.statusComboBox.Name = "statusComboBox";
@@ -368,18 +362,23 @@
             // 
             // playerPictureBox
             // 
-            this.playerPictureBox.Location = new System.Drawing.Point(3, 18);
+            this.playerPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playerPictureBox.Location = new System.Drawing.Point(0, 18);
             this.playerPictureBox.Name = "playerPictureBox";
-            this.playerPictureBox.Size = new System.Drawing.Size(196, 165);
+            this.playerPictureBox.Size = new System.Drawing.Size(229, 175);
+            this.playerPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.playerPictureBox.TabIndex = 15;
             this.playerPictureBox.TabStop = false;
             // 
             // loadPhotoButton
             // 
+            this.loadPhotoButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.loadPhotoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loadPhotoButton.Location = new System.Drawing.Point(98, 189);
+            this.loadPhotoButton.Location = new System.Drawing.Point(0, 203);
             this.loadPhotoButton.Name = "loadPhotoButton";
-            this.loadPhotoButton.Size = new System.Drawing.Size(96, 37);
+            this.loadPhotoButton.Size = new System.Drawing.Size(229, 37);
             this.loadPhotoButton.TabIndex = 16;
             this.loadPhotoButton.Text = "Загрузить";
             this.loadPhotoButton.UseVisualStyleBackColor = true;
@@ -387,6 +386,8 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.nameTextBox);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
@@ -397,37 +398,36 @@
             this.panel2.Controls.Add(this.patronymicTextBox);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.surnameTextBox);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 301);
+            this.panel2.Location = new System.Drawing.Point(0, 292);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(786, 112);
+            this.panel2.Size = new System.Drawing.Size(639, 112);
             this.panel2.TabIndex = 17;
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.playerPictureBox);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.loadPhotoButton);
-            this.panel3.Location = new System.Drawing.Point(580, 56);
+            this.panel3.Location = new System.Drawing.Point(645, 37);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(202, 230);
+            this.panel3.Size = new System.Drawing.Size(229, 240);
             this.panel3.TabIndex = 18;
             // 
             // PlayersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 413);
+            this.ClientSize = new System.Drawing.Size(874, 404);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.playersToolStrip);
             this.Controls.Add(this.playersBindingNavigator);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PlayersForm";
-            this.Text = "PlayersForm";
+            this.Text = "Игроки";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayersForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.playersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casinoDataSet)).EndInit();

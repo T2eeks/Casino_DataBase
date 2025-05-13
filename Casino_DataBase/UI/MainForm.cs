@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Casino_DataBase.UI;
 
 namespace Casino_DataBase
 {
@@ -22,10 +23,6 @@ namespace Casino_DataBase
 
         }
 
-        private void ExitButtom_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
 
         private void выходToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -62,7 +59,7 @@ namespace Casino_DataBase
 
         private void игрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GamesForm gamesForm = new GamesForm();
+            GameForm gamesForm = new GameForm();
             gamesForm.ShowDialog();
         }
 
@@ -76,17 +73,6 @@ namespace Casino_DataBase
         {
             PayoutsForm payoutsForm = new PayoutsForm();
             payoutsForm.ShowDialog();
-        }
-
-        private void exitToolStripButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void reloadToolStripButton_Click(object sender, EventArgs e)
-        {
-            statusLabel.Text = "Данные обновлены";
-            MessageBox.Show("Обновление данных...", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void exitContextMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +107,17 @@ namespace Casino_DataBase
             this.Size = Properties.Settings.Default.FormSize;
 
             statusLabel.Text = "Подключено к базе Casino";
+        }
+
+        private void ставкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BetsForm betsForm = new BetsForm();
+            betsForm.Show();
+        }
+        private void currentGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameDataForm gameDataForm = new GameDataForm();
+            gameDataForm.Show();
         }
     }
 }

@@ -40,7 +40,6 @@ namespace Casino_DataBase
                 {
                     DataPropertyName = "ID",
                     HeaderText = "ID",
-                    ReadOnly = true
                 });
 
                 playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
@@ -78,6 +77,7 @@ namespace Casino_DataBase
                 {
                     DataPropertyName = "Статус",
                     HeaderText = "Статус",
+                    Name = "dataGridViewComboBoxColumnStatus",
                     DataSource = statusItems,
                     DisplayMember = "Display",
                     ValueMember = "Value",
@@ -164,15 +164,13 @@ namespace Casino_DataBase
                 {
                     playersDataGridView.EndEdit();
                     bindingSource.EndEdit();
-
                     SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-                    adapter.Update(playersTable);
-                    MessageBox.Show("Изменения сохранены при закрытии!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+
+                    e.Cancel = MessageBox.Show("Несохраненные данные могут быть утеряны, Вы действительно хотите выйты?", "Закрытие окна", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes;                        }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка закрытия: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -290,5 +288,32 @@ namespace Casino_DataBase
                 }
             }
         }
+
+        private void playersDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = playersDataGridView.Rows[e.RowIndex];
+                var statusCell = row.Cells["dataGridViewComboBoxColumnStatus"].Value;
+
+                if (statusCell == null || statusCell == DBNull.Value)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen; 
+                }
+                else
+                {
+                    bool isVip = (bool)statusCell;
+                    if (isVip) 
+                    {
+                        row.DefaultCellStyle.BackColor = Color.SkyBlue;
+                    }
+                    else 
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Pink;
+                    }
+                }
+            }
+        }
     }
+    
 }

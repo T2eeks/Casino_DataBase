@@ -159,5 +159,34 @@
                 MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int currentPosition = bindingSource.Position;
+
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                adapter.Update(gamesTable);
+
+                gamesTable.Clear();
+                adapter.Fill(gamesTable);
+
+                if (currentPosition >= 0 && currentPosition < bindingSource.Count)
+                {
+                    bindingSource.Position = currentPosition;
+                }
+
+                gameDataGridView.DataSource = null;
+                gameDataGridView.DataSource = bindingSource;
+                gameDataGridView.Refresh();
+
+                MessageBox.Show("Данные обновлены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка обновления: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

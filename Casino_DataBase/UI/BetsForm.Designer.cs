@@ -80,25 +80,28 @@
             this.panel2.Controls.Add(this.staffIdTextBox);
             this.panel2.Controls.Add(this.playerIdTextBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 309);
+            this.panel2.Location = new System.Drawing.Point(0, 380);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(637, 112);
+            this.panel2.Size = new System.Drawing.Size(849, 138);
             this.panel2.TabIndex = 22;
             // 
             // amountTextBox
             // 
-            this.amountTextBox.Location = new System.Drawing.Point(104, 18);
+            this.amountTextBox.Location = new System.Drawing.Point(139, 22);
+            this.amountTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(117, 20);
+            this.amountTextBox.Size = new System.Drawing.Size(155, 22);
             this.amountTextBox.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(11, 18);
+            this.label1.Location = new System.Drawing.Point(15, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 15);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "Сумма";
             // 
@@ -106,9 +109,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(11, 49);
+            this.label2.Location = new System.Drawing.Point(15, 60);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.Size = new System.Drawing.Size(76, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "ID Игрока";
             // 
@@ -116,57 +120,65 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(11, 80);
+            this.label3.Location = new System.Drawing.Point(15, 98);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 15);
+            this.label3.Size = new System.Drawing.Size(109, 18);
             this.label3.TabIndex = 6;
             this.label3.Text = "ID Сотрудника";
             // 
             // dataIdTextBox
             // 
-            this.dataIdTextBox.Location = new System.Drawing.Point(336, 17);
+            this.dataIdTextBox.Location = new System.Drawing.Point(448, 21);
+            this.dataIdTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataIdTextBox.Name = "dataIdTextBox";
-            this.dataIdTextBox.Size = new System.Drawing.Size(121, 20);
+            this.dataIdTextBox.Size = new System.Drawing.Size(160, 22);
             this.dataIdTextBox.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(232, 18);
+            this.label4.Location = new System.Drawing.Point(309, 22);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(80, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "ID Данных";
             // 
             // staffIdTextBox
             // 
-            this.staffIdTextBox.Location = new System.Drawing.Point(104, 80);
+            this.staffIdTextBox.Location = new System.Drawing.Point(139, 98);
+            this.staffIdTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.staffIdTextBox.Name = "staffIdTextBox";
-            this.staffIdTextBox.Size = new System.Drawing.Size(117, 20);
+            this.staffIdTextBox.Size = new System.Drawing.Size(155, 22);
             this.staffIdTextBox.TabIndex = 12;
             // 
             // playerIdTextBox
             // 
-            this.playerIdTextBox.Location = new System.Drawing.Point(104, 48);
+            this.playerIdTextBox.Location = new System.Drawing.Point(139, 59);
+            this.playerIdTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.playerIdTextBox.Name = "playerIdTextBox";
-            this.playerIdTextBox.Size = new System.Drawing.Size(117, 20);
+            this.playerIdTextBox.Size = new System.Drawing.Size(155, 22);
             this.playerIdTextBox.TabIndex = 11;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.betsDataGridView);
-            this.panel1.Location = new System.Drawing.Point(12, 55);
+            this.panel1.Location = new System.Drawing.Point(16, 68);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(613, 231);
+            this.panel1.Size = new System.Drawing.Size(817, 284);
             this.panel1.TabIndex = 21;
             // 
             // betsDataGridView
             // 
             this.betsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.betsDataGridView.Location = new System.Drawing.Point(2, 3);
+            this.betsDataGridView.Location = new System.Drawing.Point(3, 4);
+            this.betsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betsDataGridView.Name = "betsDataGridView";
-            this.betsDataGridView.Size = new System.Drawing.Size(608, 225);
+            this.betsDataGridView.RowHeadersWidth = 51;
+            this.betsDataGridView.Size = new System.Drawing.Size(811, 277);
             this.betsDataGridView.TabIndex = 0;
             // 
             // toolStripButton4
@@ -175,7 +187,7 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton4.Text = "Выйти";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -185,7 +197,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton1.Text = "Обновить";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -204,6 +216,7 @@
             this.betsBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
             this.betsBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.betsBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.betsBindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.betsBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -224,7 +237,7 @@
             this.betsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.betsBindingNavigator.Name = "betsBindingNavigator";
             this.betsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.betsBindingNavigator.Size = new System.Drawing.Size(637, 25);
+            this.betsBindingNavigator.Size = new System.Drawing.Size(849, 31);
             this.betsBindingNavigator.TabIndex = 19;
             this.betsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -234,13 +247,13 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(55, 28);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
@@ -250,7 +263,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorDeleteItem.Text = "Удалить";
             // 
             // bindingNavigatorMoveFirstItem
@@ -259,7 +272,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
             // 
             // bindingNavigatorMovePreviousItem
@@ -268,13 +281,13 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 31);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -282,14 +295,14 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(65, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
             // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -297,7 +310,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
             // 
             // bindingNavigatorMoveLastItem
@@ -306,13 +319,13 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 28);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // saveToolStripButton
             // 
@@ -320,7 +333,7 @@
             this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Size = new System.Drawing.Size(29, 28);
             this.saveToolStripButton.Text = "Сохранить";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click_1);
             // 
@@ -331,22 +344,23 @@
             this.betsToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton4});
-            this.betsToolStrip.Location = new System.Drawing.Point(0, 25);
+            this.betsToolStrip.Location = new System.Drawing.Point(0, 31);
             this.betsToolStrip.Name = "betsToolStrip";
-            this.betsToolStrip.Size = new System.Drawing.Size(60, 27);
+            this.betsToolStrip.Size = new System.Drawing.Size(71, 31);
             this.betsToolStrip.TabIndex = 20;
             this.betsToolStrip.Text = "toolStrip1";
             // 
             // BetsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 421);
+            this.ClientSize = new System.Drawing.Size(849, 518);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.betsBindingNavigator);
             this.Controls.Add(this.betsToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BetsForm";
             this.Text = "Ставки";
             this.panel2.ResumeLayout(false);

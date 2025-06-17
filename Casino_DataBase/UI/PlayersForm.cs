@@ -30,6 +30,25 @@ namespace Casino_DataBase
                 adapter = new SqlDataAdapter("SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока FROM Игрок", connection);
                 adapter.Fill(playersTable);
 
+                DataColumn ageColumn = new DataColumn("Возраст", typeof(int));
+                playersTable.Columns.Add(ageColumn);
+
+
+                foreach (DataRow row in playersTable.Rows)
+                {
+                    if (row["Дата_рождения"] != DBNull.Value)
+                    {
+                        DateTime birthDate = (DateTime)row["Дата_рождения"];
+                        int age = DateTime.Now.Year - birthDate.Year;
+                        if (birthDate.Date > DateTime.Now.AddYears(-age)) age--;
+                        row["Возраст"] = age;
+                    }
+                    else
+                    {
+                        row["Возраст"] = 0; 
+                    }
+                }
+
                 bindingSource = new BindingSource(playersTable, null);
                 playersBindingNavigator.BindingSource = bindingSource;
 
@@ -68,11 +87,17 @@ namespace Casino_DataBase
                     HeaderText = "Дата рождения"
                 });
 
+                playersDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Возраст",
+                    HeaderText = "Возраст"
+                });
+
                 var statusItems = new List<object>
-            {
+                {
                 new { Display = "Vip", Value = true },
                 new { Display = "Classic", Value = false }
-            };
+                };
                 DataGridViewComboBoxColumn statusColumn = new DataGridViewComboBoxColumn
                 {
                     DataPropertyName = "Статус",
@@ -185,14 +210,38 @@ namespace Casino_DataBase
                 playersDataGridView.EndEdit();
                 bindingSource.EndEdit();
 
+                DateTime currentDate = DateTime.Now;
+                int minYear = currentDate.Year - 18;
+                DataRowView currentRow = (DataRowView)bindingSource.Current;
+                if (currentRow["Дата_рождения"] != DBNull.Value)
+                {
+                    DateTime birthDate = (DateTime)currentRow["Дата_рождения"];
+                    if (birthDate.Year > minYear)
+                    {
+                        MessageBox.Show($"Ошибка: Игрок должен быть старше 18 лет (мин. год рождения: {minYear}).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
                 int rowsAffected = adapter.Update(playersTable);
                 playersDataGridView.Refresh();
                 MessageBox.Show($"Строк обновлено: {rowsAffected}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.Number == 2627)
+                    MessageBox.Show("Ошибка: Игрок с таким ID уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show($"Ошибка базы данных: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex) 
+            {
+                MessageBox.Show($"Ошибка: Неверные данные ({ex.Message}). Проверьте поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Неизвестная ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

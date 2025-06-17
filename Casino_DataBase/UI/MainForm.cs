@@ -119,5 +119,17 @@ namespace Casino_DataBase
             GameDataForm gameDataForm = new GameDataForm();
             gameDataForm.Show();
         }
+
+        private void связанныеТаблицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.ShowDialog();
+        }
+
+        private void заданиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lab4 form = new Lab4();
+            form.ShowDialog();
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayoutsForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.paymentMethodComboBox = new System.Windows.Forms.ComboBox();
             this.betIdTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.payoutsToolStrip = new System.Windows.Forms.ToolStrip();
-            this.paymentMethodComboBox = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.payoutsDataGridView)).BeginInit();
@@ -78,8 +78,16 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 298);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(584, 112);
+            this.panel2.Size = new System.Drawing.Size(786, 112);
             this.panel2.TabIndex = 22;
+            // 
+            // paymentMethodComboBox
+            // 
+            this.paymentMethodComboBox.FormattingEnabled = true;
+            this.paymentMethodComboBox.Location = new System.Drawing.Point(314, 22);
+            this.paymentMethodComboBox.Name = "paymentMethodComboBox";
+            this.paymentMethodComboBox.Size = new System.Drawing.Size(121, 21);
+            this.paymentMethodComboBox.TabIndex = 12;
             // 
             // betIdTextBox
             // 
@@ -131,7 +139,7 @@
             this.panel1.Controls.Add(this.payoutsDataGridView);
             this.panel1.Location = new System.Drawing.Point(12, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(562, 231);
+            this.panel1.Size = new System.Drawing.Size(762, 231);
             this.panel1.TabIndex = 21;
             // 
             // payoutsDataGridView
@@ -142,7 +150,7 @@
             this.payoutsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.payoutsDataGridView.Location = new System.Drawing.Point(2, 2);
             this.payoutsDataGridView.Name = "payoutsDataGridView";
-            this.payoutsDataGridView.Size = new System.Drawing.Size(557, 226);
+            this.payoutsDataGridView.Size = new System.Drawing.Size(748, 226);
             this.payoutsDataGridView.TabIndex = 0;
             // 
             // closeToolStripButton
@@ -200,7 +208,7 @@
             this.payoutsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.payoutsBindingNavigator.Name = "payoutsBindingNavigator";
             this.payoutsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.payoutsBindingNavigator.Size = new System.Drawing.Size(584, 25);
+            this.payoutsBindingNavigator.Size = new System.Drawing.Size(786, 25);
             this.payoutsBindingNavigator.TabIndex = 19;
             this.payoutsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -228,6 +236,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Удалить";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -298,6 +307,7 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "Сохранить";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click_1);
             // 
             // payoutsToolStrip
             // 
@@ -312,19 +322,11 @@
             this.payoutsToolStrip.TabIndex = 20;
             this.payoutsToolStrip.Text = "toolStrip1";
             // 
-            // paymentMethodComboBox
-            // 
-            this.paymentMethodComboBox.FormattingEnabled = true;
-            this.paymentMethodComboBox.Location = new System.Drawing.Point(314, 22);
-            this.paymentMethodComboBox.Name = "paymentMethodComboBox";
-            this.paymentMethodComboBox.Size = new System.Drawing.Size(121, 21);
-            this.paymentMethodComboBox.TabIndex = 12;
-            // 
             // PayoutsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 410);
+            this.ClientSize = new System.Drawing.Size(786, 410);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.payoutsBindingNavigator);

@@ -71,8 +71,7 @@
             this.panel2.Controls.Add(this.resultComboBox);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.gameIdTextBox);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 299);
+            this.panel2.Location = new System.Drawing.Point(0, 319);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(482, 112);
             this.panel2.TabIndex = 22;
@@ -111,23 +110,22 @@
             this.gameIdTextBox.Name = "gameIdTextBox";
             this.gameIdTextBox.Size = new System.Drawing.Size(117, 20);
             this.gameIdTextBox.TabIndex = 11;
-            this.gameIdTextBox.TextChanged += new System.EventHandler(this.gameIdTextBox_TextChanged);
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Controls.Add(this.gameDataDataGridView);
-            this.panel1.Location = new System.Drawing.Point(12, 55);
+            this.panel1.Location = new System.Drawing.Point(12, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(467, 231);
+            this.panel1.Size = new System.Drawing.Size(626, 231);
             this.panel1.TabIndex = 21;
             // 
             // gameDataDataGridView
             // 
             this.gameDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gameDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gameDataDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.gameDataDataGridView.Location = new System.Drawing.Point(0, 3);
             this.gameDataDataGridView.Name = "gameDataDataGridView";
-            this.gameDataDataGridView.Size = new System.Drawing.Size(467, 231);
+            this.gameDataDataGridView.Size = new System.Drawing.Size(623, 204);
             this.gameDataDataGridView.TabIndex = 0;
             // 
             // toolStripButton4
@@ -185,7 +183,7 @@
             this.gameDataBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.gameDataBindingNavigator.Name = "gameDataBindingNavigator";
             this.gameDataBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.gameDataBindingNavigator.Size = new System.Drawing.Size(482, 25);
+            this.gameDataBindingNavigator.Size = new System.Drawing.Size(665, 25);
             this.gameDataBindingNavigator.TabIndex = 19;
             this.gameDataBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -213,7 +211,6 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Удалить";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -303,7 +300,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 411);
+            this.ClientSize = new System.Drawing.Size(665, 448);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gameDataBindingNavigator);

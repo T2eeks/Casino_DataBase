@@ -20,9 +20,9 @@ namespace Casino_DataBase {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("CasinoDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("CasinoDataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class CasinoDataSet : global::System.Data.DataSet {
+    public partial class CasinoDataSet1 : global::System.Data.DataSet {
         
         private ВыплатаDataTable tableВыплата;
         
@@ -38,23 +38,19 @@ namespace Casino_DataBase {
         
         private global::System.Data.DataRelation relationFK_Выплата_Ставка;
         
-        private global::System.Data.DataRelation relationFK_Ставка_Игрок;
-        
-        private global::System.Data.DataRelation relationFK_Ставка_Сотрудник;
+        private global::System.Data.DataRelation relationFK_Данные_о_текущей_игре_Игра;
         
         private global::System.Data.DataRelation relationFK_Ставка_Данные_о_текущей_игре;
         
-        private global::System.Data.DataRelation relationДанные_о_текущей_игре;
+        private global::System.Data.DataRelation relationFK_Ставка_Игрок;
         
-        private global::System.Data.DataRelation relationСтавка_Данные_о_теущей_игре;
-        
-        private global::System.Data.DataRelation relationFK_Данные_о_текущей_игре_Игра;
+        private global::System.Data.DataRelation relationFK_Ставка_Сотрудник;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public CasinoDataSet() {
+        public CasinoDataSet1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -65,7 +61,7 @@ namespace Casino_DataBase {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected CasinoDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected CasinoDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -216,7 +212,7 @@ namespace Casino_DataBase {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            CasinoDataSet cln = ((CasinoDataSet)(base.Clone()));
+            CasinoDataSet1 cln = ((CasinoDataSet1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -329,20 +325,18 @@ namespace Casino_DataBase {
                 }
             }
             this.relationFK_Выплата_Ставка = this.Relations["FK_Выплата_Ставка"];
+            this.relationFK_Данные_о_текущей_игре_Игра = this.Relations["FK_Данные_о_текущей_игре_Игра"];
+            this.relationFK_Ставка_Данные_о_текущей_игре = this.Relations["FK_Ставка_Данные_о_текущей_игре"];
             this.relationFK_Ставка_Игрок = this.Relations["FK_Ставка_Игрок"];
             this.relationFK_Ставка_Сотрудник = this.Relations["FK_Ставка_Сотрудник"];
-            this.relationFK_Ставка_Данные_о_текущей_игре = this.Relations["FK_Ставка_Данные_о_текущей_игре"];
-            this.relationДанные_о_текущей_игре = this.Relations["Данные_о_текущей_игре"];
-            this.relationСтавка_Данные_о_теущей_игре = this.Relations["Ставка_Данные_о_теущей игре"];
-            this.relationFK_Данные_о_текущей_игре_Игра = this.Relations["FK_Данные_о_текущей_игре_Игра"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "CasinoDataSet";
+            this.DataSetName = "CasinoDataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/CasinoDataSet.xsd";
+            this.Namespace = "http://tempuri.org/CasinoDataSet11.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableВыплата = new ВыплатаDataTable();
@@ -361,6 +355,14 @@ namespace Casino_DataBase {
                         this.tableСтавка.ID_ставкиColumn}, new global::System.Data.DataColumn[] {
                         this.tableВыплата.ID_ставкиColumn}, false);
             this.Relations.Add(this.relationFK_Выплата_Ставка);
+            this.relationFK_Данные_о_текущей_игре_Игра = new global::System.Data.DataRelation("FK_Данные_о_текущей_игре_Игра", new global::System.Data.DataColumn[] {
+                        this.tableИгра.ID_игрыColumn}, new global::System.Data.DataColumn[] {
+                        this.tableДанные_о_текущей_игре.ID_игрыColumn}, false);
+            this.Relations.Add(this.relationFK_Данные_о_текущей_игре_Игра);
+            this.relationFK_Ставка_Данные_о_текущей_игре = new global::System.Data.DataRelation("FK_Ставка_Данные_о_текущей_игре", new global::System.Data.DataColumn[] {
+                        this.tableДанные_о_текущей_игре.ID_данныхColumn}, new global::System.Data.DataColumn[] {
+                        this.tableСтавка.ID_данныхColumn}, false);
+            this.Relations.Add(this.relationFK_Ставка_Данные_о_текущей_игре);
             this.relationFK_Ставка_Игрок = new global::System.Data.DataRelation("FK_Ставка_Игрок", new global::System.Data.DataColumn[] {
                         this.tableИгрок.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableСтавка.ID_игрокаColumn}, false);
@@ -369,22 +371,6 @@ namespace Casino_DataBase {
                         this.tableСотрудник.ID_сотрудникаColumn}, new global::System.Data.DataColumn[] {
                         this.tableСтавка.ID_сотрудникаColumn}, false);
             this.Relations.Add(this.relationFK_Ставка_Сотрудник);
-            this.relationFK_Ставка_Данные_о_текущей_игре = new global::System.Data.DataRelation("FK_Ставка_Данные_о_текущей_игре", new global::System.Data.DataColumn[] {
-                        this.tableДанные_о_текущей_игре.ID_данныхColumn}, new global::System.Data.DataColumn[] {
-                        this.tableСтавка.ID_данныхColumn}, false);
-            this.Relations.Add(this.relationFK_Ставка_Данные_о_текущей_игре);
-            this.relationДанные_о_текущей_игре = new global::System.Data.DataRelation("Данные_о_текущей_игре", new global::System.Data.DataColumn[] {
-                        this.tableДанные_о_текущей_игре.ID_игрыColumn}, new global::System.Data.DataColumn[] {
-                        this.tableИгра.ID_игрыColumn}, false);
-            this.Relations.Add(this.relationДанные_о_текущей_игре);
-            this.relationСтавка_Данные_о_теущей_игре = new global::System.Data.DataRelation("Ставка_Данные_о_теущей игре", new global::System.Data.DataColumn[] {
-                        this.tableСтавка.ID_данныхColumn}, new global::System.Data.DataColumn[] {
-                        this.tableДанные_о_текущей_игре.ID_данныхColumn}, false);
-            this.Relations.Add(this.relationСтавка_Данные_о_теущей_игре);
-            this.relationFK_Данные_о_текущей_игре_Игра = new global::System.Data.DataRelation("FK_Данные_о_текущей_игре_Игра", new global::System.Data.DataColumn[] {
-                        this.tableИгра.ID_игрыColumn}, new global::System.Data.DataColumn[] {
-                        this.tableДанные_о_текущей_игре.ID_игрыColumn}, false);
-            this.Relations.Add(this.relationFK_Данные_о_текущей_игре_Игра);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -434,7 +420,7 @@ namespace Casino_DataBase {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            CasinoDataSet ds = new CasinoDataSet();
+            CasinoDataSet1 ds = new CasinoDataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -759,7 +745,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -935,16 +921,13 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Данные_о_текущей_игреRow AddДанные_о_текущей_игреRow(СтавкаRow parentСтавкаRowByСтавка_Данные_о_теущей_игре, System.DateTime Дата_время, ИграRow parentИграRowByFK_Данные_о_текущей_игре_Игра, string Результат_игры) {
+            public Данные_о_текущей_игреRow AddДанные_о_текущей_игреRow(int ID_данных, System.DateTime Дата_время, ИграRow parentИграRowByFK_Данные_о_текущей_игре_Игра, string Результат_игры) {
                 Данные_о_текущей_игреRow rowДанные_о_текущей_игреRow = ((Данные_о_текущей_игреRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        ID_данных,
                         Дата_время,
                         null,
                         Результат_игры};
-                if ((parentСтавкаRowByСтавка_Данные_о_теущей_игре != null)) {
-                    columnValuesArray[0] = parentСтавкаRowByСтавка_Данные_о_теущей_игре[5];
-                }
                 if ((parentИграRowByFK_Данные_о_текущей_игре_Игра != null)) {
                     columnValuesArray[2] = parentИграRowByFK_Данные_о_текущей_игре_Игра[0];
                 }
@@ -1069,7 +1052,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1235,15 +1218,12 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ИграRow AddИграRow(Данные_о_текущей_игреRow parentДанные_о_текущей_игреRowByДанные_о_текущей_игре, string Наименование, string Правила) {
+            public ИграRow AddИграRow(int ID_игры, string Наименование, string Правила) {
                 ИграRow rowИграRow = ((ИграRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        ID_игры,
                         Наименование,
                         Правила};
-                if ((parentДанные_о_текущей_игреRowByДанные_о_текущей_игре != null)) {
-                    columnValuesArray[0] = parentДанные_о_текущей_игреRowByДанные_о_текущей_игре[2];
-                }
                 rowИграRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowИграRow);
                 return rowИграRow;
@@ -1362,7 +1342,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1441,8 +1421,6 @@ namespace Casino_DataBase {
             private global::System.Data.DataColumn columnСтатус;
             
             private global::System.Data.DataColumn columnФото_игрока;
-            
-            private global::System.Data.DataColumn columnОбщая_сумма_ставок;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1535,14 +1513,6 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Общая_сумма_ставокColumn {
-                get {
-                    return this.columnОбщая_сумма_ставок;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1578,7 +1548,7 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ИгрокRow AddИгрокRow(int ID, string Фамилия, string Имя, string Отчество, System.DateTime Дата_рождения, bool Статус, string Фото_игрока, decimal Общая_сумма_ставок) {
+            public ИгрокRow AddИгрокRow(int ID, string Фамилия, string Имя, string Отчество, System.DateTime Дата_рождения, bool Статус, string Фото_игрока) {
                 ИгрокRow rowИгрокRow = ((ИгрокRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -1587,8 +1557,7 @@ namespace Casino_DataBase {
                         Отчество,
                         Дата_рождения,
                         Статус,
-                        Фото_игрока,
-                        Общая_сумма_ставок};
+                        Фото_игрока};
                 rowИгрокRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowИгрокRow);
                 return rowИгрокRow;
@@ -1625,7 +1594,6 @@ namespace Casino_DataBase {
                 this.columnДата_рождения = base.Columns["Дата_рождения"];
                 this.columnСтатус = base.Columns["Статус"];
                 this.columnФото_игрока = base.Columns["Фото_игрока"];
-                this.columnОбщая_сумма_ставок = base.Columns["Общая_сумма_ставок"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1645,8 +1613,6 @@ namespace Casino_DataBase {
                 base.Columns.Add(this.columnСтатус);
                 this.columnФото_игрока = new global::System.Data.DataColumn("Фото_игрока", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnФото_игрока);
-                this.columnОбщая_сумма_ставок = new global::System.Data.DataColumn("Общая_сумма_ставок", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnОбщая_сумма_ставок);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -1726,7 +1692,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2079,7 +2045,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2421,7 +2387,7 @@ namespace Casino_DataBase {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CasinoDataSet ds = new CasinoDataSet();
+                CasinoDataSet1 ds = new CasinoDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2621,17 +2587,6 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public СтавкаRow СтавкаRow {
-                get {
-                    return ((СтавкаRow)(this.GetParentRow(this.Table.ParentRelations["Ставка_Данные_о_теущей игре"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Ставка_Данные_о_теущей игре"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ИграRow ИграRow {
                 get {
                     return ((ИграRow)(this.GetParentRow(this.Table.ParentRelations["FK_Данные_о_текущей_игре_Игра"])));
@@ -2649,17 +2604,6 @@ namespace Casino_DataBase {
                 }
                 else {
                     return ((СтавкаRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Ставка_Данные_о_текущей_игре"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ИграRow[] GetИграRows() {
-                if ((this.Table.ChildRelations["Данные_о_текущей_игре"] == null)) {
-                    return new ИграRow[0];
-                }
-                else {
-                    return ((ИграRow[])(base.GetChildRows(this.Table.ChildRelations["Данные_о_текущей_игре"])));
                 }
             }
         }
@@ -2708,17 +2652,6 @@ namespace Casino_DataBase {
                 }
                 set {
                     this[this.tableИгра.ПравилаColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Данные_о_текущей_игреRow Данные_о_текущей_игреRow {
-                get {
-                    return ((Данные_о_текущей_игреRow)(this.GetParentRow(this.Table.ParentRelations["Данные_о_текущей_игре"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Данные_о_текущей_игре"]);
                 }
             }
             
@@ -2837,22 +2770,6 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Общая_сумма_ставок {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableИгрок.Общая_сумма_ставокColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Общая_сумма_ставок\' в таблице \'Игрок\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableИгрок.Общая_сумма_ставокColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsОтчествоNull() {
                 return this.IsNull(this.tableИгрок.ОтчествоColumn);
             }
@@ -2873,18 +2790,6 @@ namespace Casino_DataBase {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetФото_игрокаNull() {
                 this[this.tableИгрок.Фото_игрокаColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsОбщая_сумма_ставокNull() {
-                return this.IsNull(this.tableИгрок.Общая_сумма_ставокColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetОбщая_сумма_ставокNull() {
-                this[this.tableИгрок.Общая_сумма_ставокColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3101,6 +3006,17 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Данные_о_текущей_игреRow Данные_о_текущей_игреRow {
+                get {
+                    return ((Данные_о_текущей_игреRow)(this.GetParentRow(this.Table.ParentRelations["FK_Ставка_Данные_о_текущей_игре"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Ставка_Данные_о_текущей_игре"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ИгрокRow ИгрокRow {
                 get {
                     return ((ИгрокRow)(this.GetParentRow(this.Table.ParentRelations["FK_Ставка_Игрок"])));
@@ -3123,34 +3039,12 @@ namespace Casino_DataBase {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Данные_о_текущей_игреRow Данные_о_текущей_игреRow {
-                get {
-                    return ((Данные_о_текущей_игреRow)(this.GetParentRow(this.Table.ParentRelations["FK_Ставка_Данные_о_текущей_игре"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Ставка_Данные_о_текущей_игре"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ВыплатаRow[] GetВыплатаRows() {
                 if ((this.Table.ChildRelations["FK_Выплата_Ставка"] == null)) {
                     return new ВыплатаRow[0];
                 }
                 else {
                     return ((ВыплатаRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Выплата_Ставка"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Данные_о_текущей_игреRow[] GetДанные_о_текущей_игреRows() {
-                if ((this.Table.ChildRelations["Ставка_Данные_о_теущей игре"] == null)) {
-                    return new Данные_о_текущей_игреRow[0];
-                }
-                else {
-                    return ((Данные_о_текущей_игреRow[])(base.GetChildRows(this.Table.ChildRelations["Ставка_Данные_о_теущей игре"])));
                 }
             }
         }
@@ -3360,7 +3254,7 @@ namespace Casino_DataBase {
         }
     }
 }
-namespace Casino_DataBase.CasinoDataSetTableAdapters {
+namespace Casino_DataBase.CasinoDataSet1TableAdapters {
     
     
     /// <summary>
@@ -3549,7 +3443,7 @@ SELECT ID_выплаты, Дата_время, ID_ставки, Способ_в�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.ВыплатаDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.ВыплатаDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3562,9 +3456,9 @@ SELECT ID_выплаты, Дата_время, ID_ставки, Способ_в�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.ВыплатаDataTable GetData() {
+        public virtual CasinoDataSet1.ВыплатаDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.ВыплатаDataTable dataTable = new CasinoDataSet.ВыплатаDataTable();
+            CasinoDataSet1.ВыплатаDataTable dataTable = new CasinoDataSet1.ВыплатаDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3572,14 +3466,14 @@ SELECT ID_выплаты, Дата_время, ID_ставки, Способ_в�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.ВыплатаDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.ВыплатаDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Выплата");
         }
         
@@ -3892,7 +3786,7 @@ SELECT ID_данных, Дата_время, ID_игры, Результат_и�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.Данные_о_текущей_игреDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.Данные_о_текущей_игреDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3905,9 +3799,9 @@ SELECT ID_данных, Дата_время, ID_игры, Результат_и�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.Данные_о_текущей_игреDataTable GetData() {
+        public virtual CasinoDataSet1.Данные_о_текущей_игреDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.Данные_о_текущей_игреDataTable dataTable = new CasinoDataSet.Данные_о_текущей_игреDataTable();
+            CasinoDataSet1.Данные_о_текущей_игреDataTable dataTable = new CasinoDataSet1.Данные_о_текущей_игреDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3915,14 +3809,14 @@ SELECT ID_данных, Дата_время, ID_игры, Результат_и�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.Данные_о_текущей_игреDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.Данные_о_текущей_игреDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Данные_о_текущей_игре");
         }
         
@@ -4223,7 +4117,7 @@ SELECT ID_игры, Наименование, Правила FROM Игра WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.ИграDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.ИграDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4236,9 +4130,9 @@ SELECT ID_игры, Наименование, Правила FROM Игра WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.ИграDataTable GetData() {
+        public virtual CasinoDataSet1.ИграDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.ИграDataTable dataTable = new CasinoDataSet.ИграDataTable();
+            CasinoDataSet1.ИграDataTable dataTable = new CasinoDataSet1.ИграDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4246,14 +4140,14 @@ SELECT ID_игры, Наименование, Правила FROM Игра WHERE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.ИграDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.ИграDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Игра");
         }
         
@@ -4515,7 +4409,7 @@ SELECT ID_игры, Наименование, Правила FROM Игра WHERE
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Игрок] WHERE (([ID] = @Original_ID) AND ([Фамилия] = @Original_Фамилия) AND ([Имя] = @Original_Имя) AND ((@IsNull_Отчество = 1 AND [Отчество] IS NULL) OR ([Отчество] = @Original_Отчество)) AND ([Дата_рождения] = @Original_Дата_рождения) AND ([Статус] = @Original_Статус))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Игрок] WHERE (([ID] = @Original_ID) AND ([Фамилия] = @Original_Фамилия) AND ([Имя] = @Original_Имя) AND ((@IsNull_Отчество = 1 AND [Отчество] IS NULL) OR ([Отчество] = @Original_Отчество)) AND ([Дата_рождения] = @Original_Дата_рождения) AND ([Статус] = @Original_Статус))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Фамилия", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Фамилия", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4526,7 +4420,7 @@ SELECT ID_игры, Наименование, Правила FROM Игра WHERE
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Статус", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Статус", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Игрок] ([ID], [Фамилия], [Имя], [Отчество], [Дата_рождения], [Статус], [Фото_игрока]) VALUES (@ID, @Фамилия, @Имя, @Отчество, @Дата_рождения, @Статус, @Фото_игрока);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Игрок] ([ID], [Фамилия], [Имя], [Отчество], [Дата_рождения], [Статус], [Фото_игрока]) VALUES (@ID, @Фамилия, @Имя, @Отчество, @Дата_рождения, @Статус, @Фото_игрока);
 SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока FROM Игрок WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4538,7 +4432,7 @@ SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Фото_игрока", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Фото_игрока", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Игрок] SET [ID] = @ID, [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Дата_рождения] = @Дата_рождения, [Статус] = @Статус, [Фото_игрока] = @Фото_игрока WHERE (([ID] = @Original_ID) AND ([Фамилия] = @Original_Фамилия) AND ([Имя] = @Original_Имя) AND ((@IsNull_Отчество = 1 AND [Отчество] IS NULL) OR ([Отчество] = @Original_Отчество)) AND ([Дата_рождения] = @Original_Дата_рождения) AND ([Статус] = @Original_Статус));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Игрок] SET [ID] = @ID, [Фамилия] = @Фамилия, [Имя] = @Имя, [Отчество] = @Отчество, [Дата_рождения] = @Дата_рождения, [Статус] = @Статус, [Фото_игрока] = @Фото_игрока WHERE (([ID] = @Original_ID) AND ([Фамилия] = @Original_Фамилия) AND ([Имя] = @Original_Имя) AND ((@IsNull_Отчество = 1 AND [Отчество] IS NULL) OR ([Отчество] = @Original_Отчество)) AND ([Дата_рождения] = @Original_Дата_рождения) AND ([Статус] = @Original_Статус));
 SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока FROM Игрок WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4570,8 +4464,8 @@ SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока\r\nFRO" +
-                "M            Игрок";
+            this._commandCollection[0].CommandText = "SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, Статус, Фото_игрока FROM dbo.Иг" +
+                "рок";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4579,7 +4473,7 @@ SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.ИгрокDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.ИгрокDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4592,9 +4486,9 @@ SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.ИгрокDataTable GetData() {
+        public virtual CasinoDataSet1.ИгрокDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.ИгрокDataTable dataTable = new CasinoDataSet.ИгрокDataTable();
+            CasinoDataSet1.ИгрокDataTable dataTable = new CasinoDataSet1.ИгрокDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4602,14 +4496,14 @@ SELECT ID, Фамилия, Имя, Отчество, Дата_рождения, 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.ИгрокDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.ИгрокDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Игрок");
         }
         
@@ -4997,7 +4891,7 @@ SELECT ID_сотрудника, Фамилия, Имя, Отчество, Дол
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.СотрудникDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.СотрудникDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5010,9 +4904,9 @@ SELECT ID_сотрудника, Фамилия, Имя, Отчество, Дол
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.СотрудникDataTable GetData() {
+        public virtual CasinoDataSet1.СотрудникDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.СотрудникDataTable dataTable = new CasinoDataSet.СотрудникDataTable();
+            CasinoDataSet1.СотрудникDataTable dataTable = new CasinoDataSet1.СотрудникDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5020,14 +4914,14 @@ SELECT ID_сотрудника, Фамилия, Имя, Отчество, Дол
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.СотрудникDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.СотрудникDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Сотрудник");
         }
         
@@ -5460,7 +5354,7 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CasinoDataSet.СтавкаDataTable dataTable) {
+        public virtual int Fill(CasinoDataSet1.СтавкаDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5473,9 +5367,9 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CasinoDataSet.СтавкаDataTable GetData() {
+        public virtual CasinoDataSet1.СтавкаDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CasinoDataSet.СтавкаDataTable dataTable = new CasinoDataSet.СтавкаDataTable();
+            CasinoDataSet1.СтавкаDataTable dataTable = new CasinoDataSet1.СтавкаDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5483,14 +5377,14 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet.СтавкаDataTable dataTable) {
+        public virtual int Update(CasinoDataSet1.СтавкаDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CasinoDataSet dataSet) {
+        public virtual int Update(CasinoDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "Ставка");
         }
         
@@ -5811,7 +5705,7 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(CasinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(CasinoDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._играTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Игра.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -5875,7 +5769,7 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(CasinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(CasinoDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._играTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Игра.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -5933,7 +5827,7 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(CasinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(CasinoDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._выплатаTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Выплата.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -6015,7 +5909,7 @@ SELECT ID_ставки, Сумма, Дата_время, ID_игрока, ID_с�
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(CasinoDataSet dataSet) {
+        public virtual int UpdateAll(CasinoDataSet1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -40,6 +40,7 @@
             this.выплатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ставкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связанныеТаблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,6 +49,7 @@
             this.addContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заданиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
@@ -62,7 +64,8 @@
             this.оПрограммеToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(780, 28);
+            this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStripMain.Size = new System.Drawing.Size(585, 24);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             this.menuStripMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -72,13 +75,13 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem1});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // выходToolStripMenuItem1
             // 
             this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
-            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
             this.выходToolStripMenuItem1.Text = "Выход";
             this.выходToolStripMenuItem1.Click += new System.EventHandler(this.выходToolStripMenuItem1_Click);
             // 
@@ -90,58 +93,67 @@
             this.сотрудникиToolStripMenuItem,
             this.выплатыToolStripMenuItem,
             this.ставкиToolStripMenuItem,
-            this.currentGameToolStripMenuItem});
+            this.currentGameToolStripMenuItem,
+            this.связанныеТаблицыToolStripMenuItem,
+            this.заданиеToolStripMenuItem});
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.выходToolStripMenuItem.Text = "Таблицы";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // игрокиToolStripMenuItem
             // 
             this.игрокиToolStripMenuItem.Name = "игрокиToolStripMenuItem";
-            this.игрокиToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.игрокиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.игрокиToolStripMenuItem.Text = "Игроки";
             this.игрокиToolStripMenuItem.Click += new System.EventHandler(this.игрокиToolStripMenuItem_Click);
             // 
             // игрыToolStripMenuItem
             // 
             this.игрыToolStripMenuItem.Name = "игрыToolStripMenuItem";
-            this.игрыToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.игрыToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.игрыToolStripMenuItem.Text = "Игры";
             this.игрыToolStripMenuItem.Click += new System.EventHandler(this.игрыToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
             // 
             // выплатыToolStripMenuItem
             // 
             this.выплатыToolStripMenuItem.Name = "выплатыToolStripMenuItem";
-            this.выплатыToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.выплатыToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.выплатыToolStripMenuItem.Text = "Выплаты";
             this.выплатыToolStripMenuItem.Click += new System.EventHandler(this.выплатыToolStripMenuItem_Click);
             // 
             // ставкиToolStripMenuItem
             // 
             this.ставкиToolStripMenuItem.Name = "ставкиToolStripMenuItem";
-            this.ставкиToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.ставкиToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.ставкиToolStripMenuItem.Text = "Ставки";
             this.ставкиToolStripMenuItem.Click += new System.EventHandler(this.ставкиToolStripMenuItem_Click);
             // 
             // currentGameToolStripMenuItem
             // 
             this.currentGameToolStripMenuItem.Name = "currentGameToolStripMenuItem";
-            this.currentGameToolStripMenuItem.Size = new System.Drawing.Size(263, 26);
+            this.currentGameToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.currentGameToolStripMenuItem.Text = "Данные о текущих играх";
             this.currentGameToolStripMenuItem.Click += new System.EventHandler(this.currentGameToolStripMenuItem_Click);
+            // 
+            // связанныеТаблицыToolStripMenuItem
+            // 
+            this.связанныеТаблицыToolStripMenuItem.Name = "связанныеТаблицыToolStripMenuItem";
+            this.связанныеТаблицыToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.связанныеТаблицыToolStripMenuItem.Text = "Связанные таблицы";
+            this.связанныеТаблицыToolStripMenuItem.Click += new System.EventHandler(this.связанныеТаблицыToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -150,17 +162,16 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 424);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(780, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(585, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(249, 20);
+            this.statusLabel.Size = new System.Drawing.Size(198, 17);
             this.statusLabel.Text = "Подключено к базе данных Casino";
             // 
             // contextMenuStripMain
@@ -172,46 +183,52 @@
             this.removeContextMenuItem,
             this.exitContextMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(133, 100);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(118, 92);
             this.contextMenuStripMain.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // reloadContextMenuItem
             // 
             this.reloadContextMenuItem.Name = "reloadContextMenuItem";
-            this.reloadContextMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.reloadContextMenuItem.Size = new System.Drawing.Size(117, 22);
             this.reloadContextMenuItem.Text = "Reload";
             this.reloadContextMenuItem.Click += new System.EventHandler(this.reloadContextMenuItem_Click_1);
             // 
             // addContextMenuItem
             // 
             this.addContextMenuItem.Name = "addContextMenuItem";
-            this.addContextMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.addContextMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addContextMenuItem.Text = "Add";
             // 
             // removeContextMenuItem
             // 
             this.removeContextMenuItem.Name = "removeContextMenuItem";
-            this.removeContextMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.removeContextMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeContextMenuItem.Text = "Remove";
             // 
             // exitContextMenuItem
             // 
             this.exitContextMenuItem.Name = "exitContextMenuItem";
-            this.exitContextMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.exitContextMenuItem.Size = new System.Drawing.Size(117, 22);
             this.exitContextMenuItem.Text = "Exit";
             this.exitContextMenuItem.Click += new System.EventHandler(this.exitContextMenuItem_Click_1);
             // 
+            // заданиеToolStripMenuItem
+            // 
+            this.заданиеToolStripMenuItem.Name = "заданиеToolStripMenuItem";
+            this.заданиеToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.заданиеToolStripMenuItem.Text = "4Задание";
+            this.заданиеToolStripMenuItem.Click += new System.EventHandler(this.заданиеToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 450);
+            this.ClientSize = new System.Drawing.Size(585, 366);
             this.ContextMenuStrip = this.contextMenuStripMain;
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStripMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Казино:управление ставками";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -246,6 +263,8 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.ToolStripMenuItem ставкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem связанныеТаблицыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заданиеToolStripMenuItem;
     }
 }
 

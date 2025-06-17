@@ -17,11 +17,37 @@ namespace Casino_DataBase.UI
         private SqlConnection connection;
         private SqlDataAdapter adapter;
         private DataTable gameDataTable;
+        private DataTable gamesTable;
         private BindingSource bindingSource;
 
         public GameDataForm()
         {
             InitializeComponent();
+
+            Label resultLabel = new Label { Text = "Фильтр по результату:", Location = new Point(67, 30), AutoSize = true };
+            ComboBox resultComboBoxFilter = new ComboBox
+            {
+
+                Location = new Point(67, 50),
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Items = { "Все", "Победа", "Поражение", "Ничья" },
+                SelectedIndex = 0
+            };
+            resultComboBoxFilter.SelectedIndexChanged += ResultComboBoxFilter_SelectedIndexChanged;
+
+            Label dateSortLabel = new Label { Text = "Сортировка по дате:", Location = new Point(10, 40), AutoSize = true };
+            ComboBox dateSortComboBox = new ComboBox
+            {
+                Location = new Point(230, 50),
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Items = { "Без сортировки", "По возрастанию", "По убыванию" },
+                SelectedIndex = 0
+            };
+            dateSortComboBox.SelectedIndexChanged += DateSortComboBox_SelectedIndexChanged;
+
+            this.Controls.Add(resultLabel);
+            this.Controls.Add(resultComboBoxFilter);
+            this.Controls.Add(dateSortComboBox);
 
             try
             {
@@ -30,6 +56,20 @@ namespace Casino_DataBase.UI
                 gameDataTable = new DataTable();
                 adapter = new SqlDataAdapter("SELECT ID_данных AS ID, Дата_время, ID_игры, Результат_игры FROM Данные_о_текущей_игре", connection);
                 adapter.Fill(gameDataTable);
+
+                gamesTable = new DataTable();
+                SqlDataAdapter gamesAdapter = new SqlDataAdapter("SELECT ID_игры, Наименование FROM Игра", connection);
+                gamesAdapter.Fill(gamesTable);
+
+                DataColumn gameNameColumn = new DataColumn("Наименование_игры", typeof(string));
+                gameDataTable.Columns.Add(gameNameColumn); 
+
+                foreach (DataRow row in gameDataTable.Rows)
+                {
+                    int gameId = (int)row["ID_игры"];
+                    DataRow gameRow = gamesTable.AsEnumerable().FirstOrDefault(r => r.Field<int>("ID_игры") == gameId);
+                    row["Наименование_игры"] = gameRow != null ? gameRow["Наименование"].ToString() : "Неизвестная игра";
+                }
 
                 bindingSource = new BindingSource(gameDataTable, null);
                 gameDataBindingNavigator.BindingSource = bindingSource;
@@ -55,6 +95,13 @@ namespace Casino_DataBase.UI
                     HeaderText = "ID игры"
                 });
 
+                gameDataDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Наименование_игры",
+                    HeaderText = "Наименование игры"
+                });
+
+
                 DataGridViewComboBoxColumn resultColumn = new DataGridViewComboBoxColumn
                 {
                     DataPropertyName = "Результат_игры",
@@ -76,16 +123,15 @@ namespace Casino_DataBase.UI
                     if (bindingSource.Current != null)
                     {
                         DataRowView row = (DataRowView)bindingSource.Current;
-                        string result = row["Результат_игры"] != DBNull.Value ? row["Результат_игры"].ToString() : "Ничья"; // Проверка на DBNull
+                        string result = row["Результат_игры"] != DBNull.Value ? row["Результат_игры"].ToString() : "Ничья";
                         if (!new string[] { "Победа", "Поражение", "Ничья" }.Contains(result))
                         {
                             MessageBox.Show("Некорректный результат игры! Допустимы: Победа, Поражение, Ничья.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            row["Результат_игры"] = "Ничья"; // Установка значения по умолчанию
+                            row["Результат_игры"] = "Ничья";
                         }
                     }
                 };
 
-               
                 gameDataDataGridView.DataError += (s, e) =>
                 {
                     MessageBox.Show($"Ошибка в DataGridView: {e.Exception.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,6 +141,66 @@ namespace Casino_DataBase.UI
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ResultComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string selectedResult = comboBox.SelectedItem.ToString();
+
+            if (selectedResult == "Все")
+            {
+                bindingSource.RemoveFilter();
+            }
+            else
+            {
+                bindingSource.Filter = $"Результат_игры = '{selectedResult}'";
+            }
+
+            ApplyCombinedFilter();
+        }
+
+        private void DateSortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string selectedSort = comboBox.SelectedItem.ToString();
+
+            ApplyCombinedFilter(selectedSort);
+        }
+
+        private void ApplyCombinedFilter(string sortOption = "Без сортировки")
+        {
+            string currentFilter = bindingSource.Filter ?? "";
+            string sortOrder = "";
+
+            switch (sortOption)
+            {
+                case "По возрастанию":
+                    sortOrder = "ORDER BY Дата_время ASC";
+                    break;
+                case "По убыванию":
+                    sortOrder = "ORDER BY Дата_время DESC";
+                    break;
+                default:
+                    sortOrder = "";
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(sortOrder))
+            {
+                gameDataTable.Clear();
+                using (SqlCommand command = new SqlCommand($"SELECT ID_данных AS ID, Дата_время, ID_игры, Результат_игры FROM Данные_о_текущей_игре {sortOrder}", connection))
+                {
+                    adapter.SelectCommand = command;
+                    adapter.Fill(gameDataTable);
+                }
+            }
+
+            bindingSource.DataSource = gameDataTable;
+            if (!string.IsNullOrEmpty(currentFilter))
+            {
+                bindingSource.Filter = currentFilter;
             }
         }
 
@@ -122,11 +228,23 @@ namespace Casino_DataBase.UI
             }
         }
 
-        private void saveToolStripButton_Click(object sender, EventArgs e)
+        private void saveToolStripButton_Click_1(object sender, EventArgs e)
         {
-           
-        }
+            try
+            {
+                gameDataDataGridView.EndEdit();
+                bindingSource.EndEdit();
 
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                int rowsAffected = adapter.Update(gameDataTable);
+                gameDataDataGridView.Refresh();
+                MessageBox.Show($"Строк обновлено: {rowsAffected}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void deleteToolStripButton_Click(object sender, EventArgs e)
         {
@@ -161,7 +279,6 @@ namespace Casino_DataBase.UI
             }
         }
 
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             try
@@ -194,34 +311,6 @@ namespace Casino_DataBase.UI
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void saveToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                gameDataDataGridView.EndEdit();
-                bindingSource.EndEdit();
-
-                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-                int rowsAffected = adapter.Update(gameDataTable);
-                gameDataDataGridView.Refresh();
-                MessageBox.Show($"Строк обновлено: {rowsAffected}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gameIdTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

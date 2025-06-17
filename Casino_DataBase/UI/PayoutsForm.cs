@@ -31,6 +31,43 @@ namespace Casino_DataBase
                 adapter = new SqlDataAdapter("SELECT ID_выплаты AS ID, Дата_время, ID_ставки, Способ_выплаты, Сумма FROM Выплата", connection);
                 adapter.Fill(payoutsTable);
 
+                DataTable stakesTable = new DataTable();
+                SqlDataAdapter stakesAdapter = new SqlDataAdapter("SELECT ID_ставки, ID_игрока FROM Ставка", connection);
+                stakesAdapter.Fill(stakesTable);
+
+                DataTable playersTable = new DataTable();
+                SqlDataAdapter playersAdapter = new SqlDataAdapter("SELECT ID, Фамилия, Имя, Отчество FROM Игрок", connection);
+                playersAdapter.Fill(playersTable);
+
+                DataColumn fullNameColumn = new DataColumn("ФИО", typeof(string));
+                payoutsTable.Columns.Add(fullNameColumn);
+
+                foreach (DataRow row in payoutsTable.Rows)
+                {
+                    int betId = (int)row["ID_ставки"];
+                    DataRow stakeRow = stakesTable.AsEnumerable().FirstOrDefault(s => s.Field<int>("ID_ставки") == betId);
+                    if (stakeRow != null)
+                    {
+                        int playerId = (int)stakeRow["ID_игрока"];
+                        DataRow playerRow = playersTable.AsEnumerable().FirstOrDefault(p => p.Field<int>("ID") == playerId);
+                        if (playerRow != null)
+                        {
+                            string surname = playerRow["Фамилия"] != DBNull.Value ? playerRow["Фамилия"].ToString() : "";
+                            string name = playerRow["Имя"] != DBNull.Value ? playerRow["Имя"].ToString() : "";
+                            string patronymic = playerRow["Отчество"] != DBNull.Value ? playerRow["Отчество"].ToString() : "";
+                            row["ФИО"] = $"{surname} {name} {patronymic}".Trim();
+                        }
+                        else
+                        {
+                            row["ФИО"] = "Неизвестный игрок";
+                        }
+                    }
+                    else
+                    {
+                        row["ФИО"] = "Ставка не найдена";
+                    }
+                }
+
                 bindingSource = new BindingSource(payoutsTable, null);
                 payoutsBindingNavigator.BindingSource = bindingSource;
 
@@ -67,6 +104,12 @@ namespace Casino_DataBase
                 {
                     DataPropertyName = "Сумма",
                     HeaderText = "Сумма"
+                });
+
+                payoutsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "ФИО",
+                    HeaderText = "ФИО игрока"
                 });
 
                 payoutsDataGridView.DataSource = bindingSource;
@@ -243,6 +286,29 @@ namespace Casino_DataBase
         }
 
         private void closeToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                payoutsDataGridView.EndEdit();
+                bindingSource.EndEdit();
+
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                int rowsAffected = adapter.Update(payoutsTable);
+                payoutsDataGridView.Refresh();
+                MessageBox.Show($"Строк обновлено: {rowsAffected}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
